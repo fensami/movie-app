@@ -3,8 +3,7 @@ import axios from "axios";
 import MovieCard from "./components/MovieCard";
 import "./App.css";
 
-
-const API_KEY = "3dc1bf4b";
+const API_KEY = "3dc1bf4b"; // Replace with your real key
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -26,6 +25,11 @@ function App() {
     }
   };
 
+  const handleClear = () => {
+    setSearchTerm("");
+    setMovies([]);
+  };
+
   return (
     <div className="app">
       <h1>🎬 Movie Search App</h1>
@@ -37,6 +41,9 @@ function App() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
+        <button onClick={handleClear} style={{ marginLeft: "10px", backgroundColor: "#555" }}>
+          Clear
+        </button>
       </div>
 
       <div className="movie-list">
